@@ -1,58 +1,372 @@
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --navy: #0f172a;
+    --text: #334155;
+    --muted: #64748b;
+    --background: #f1f5f9;
+    --card: #ffffff;
+    --border: #e2e8f0;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 35%),
+        var(--background);
+    line-height: 1.7;
+}
+
+/* ==============================
+   RESUME CONTAINER
+============================== */
 
 .container {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 55px 65px;
+    background: var(--card);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+    animation: fadeIn 0.8s ease-out;
 }
+
+/* ==============================
+   HEADER
+============================== */
 
 header {
-	text-align: center;
-	margin-bottom: 50px;
+    text-align: center;
+    margin: -55px -65px 45px;
+    padding: 55px 35px 42px;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: #ffffff;
+    border-radius: 17px 17px 0 0;
+    position: relative;
+    overflow: hidden;
 }
 
-h1 {
-	font-size: 36px;
-	margin: 0;
+header::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -80px;
+    top: -100px;
+    border-radius: 50%;
+    background: rgba(96, 165, 250, 0.15);
 }
 
-p {
-	font-size: 18px;
-	margin: 0;
+header h1 {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin: 0 0 8px;
+    color: #ffffff;
 }
+
+header p {
+    position: relative;
+    z-index: 1;
+    font-size: 15px;
+    color: #cbd5e1;
+    margin: 5px 0;
+}
+
+header p:first-of-type {
+    color: #93c5fd;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+/* ==============================
+   SECTIONS
+============================== */
 
 section {
-	margin-bottom: 50px;
+    margin-bottom: 38px;
+    padding: 0 0 28px;
+    border-bottom: 1px solid var(--border);
+    animation: slideUp 0.6s ease both;
+}
+
+section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 h2 {
-	font-size: 24px;
-	margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--navy);
+    font-size: 21px;
+    font-weight: 800;
+    margin: 0 0 20px;
+    letter-spacing: -0.5px;
 }
 
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-li {
-	display: inline-block;
-	margin-right: 10px;
-	font-size: 18px;
+h2::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 25px;
+    flex-shrink: 0;
+    background: var(--primary);
+    border-radius: 5px;
 }
 
 h3 {
-	font-size: 20px;
-	margin-top: 20px;
-	margin-bottom: 10px;
+    color: var(--primary-dark);
+    font-size: 17px;
+    font-weight: 700;
+    margin: 22px 0 8px;
 }
 
 p {
-	font-size: 18px;
-	line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 0 0 12px;
+    color: var(--text);
+}
+
+strong {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+/* ==============================
+   SKILLS & LANGUAGE BADGES
+============================== */
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    padding: 7px 14px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1d4ed8;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 8px;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+li:hover {
+    background: var(--primary);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+}
+
+/* ==============================
+   PROJECTS & EDUCATION
+============================== */
+
+#projects h3,
+section h3 {
+    position: relative;
+}
+
+#projects h3:first-of-type {
+    margin-top: 0;
+}
+
+section h3 + p {
+    margin-bottom: 10px;
+}
+
+/* ==============================
+   CAREER OBJECTIVE
+============================== */
+
+section:last-child {
+    background: #f8fafc;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+}
+
+section:last-child h2 {
+    margin-bottom: 12px;
+}
+
+/* ==============================
+   ANIMATIONS
+============================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 768px) {
+    body {
+        padding: 18px 12px;
+    }
+
+    .container {
+        padding: 30px 24px;
+        border-radius: 14px;
+    }
+
+    header {
+        margin: -30px -24px 32px;
+        padding: 40px 20px 32px;
+        border-radius: 13px 13px 0 0;
+    }
+
+    header h1 {
+        letter-spacing: -0.8px;
+    }
+
+    section {
+        margin-bottom: 30px;
+        padding-bottom: 24px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    li {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 24px 17px;
+    }
+
+    header {
+        margin: -24px -17px 28px;
+        padding: 35px 14px 28px;
+    }
+
+    header p {
+        font-size: 13px;
+        overflow-wrap: anywhere;
+    }
+
+    ul {
+        gap: 7px;
+    }
+}
+
+/* ==============================
+   PRINT / SAVE AS PDF
+============================== */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body {
+        padding: 0;
+        background: #ffffff;
+        color: #000000;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        animation: none;
+    }
+
+    header {
+        margin: 0 0 25px;
+        border-radius: 0;
+        break-inside: avoid;
+    }
+
+    section {
+        animation: none;
+        break-inside: avoid;
+    }
+
+    h2, h3 {
+        break-after: avoid;
+    }
+
+    li {
+        color: #1d4ed8;
+        break-inside: avoid;
+    }
 }
